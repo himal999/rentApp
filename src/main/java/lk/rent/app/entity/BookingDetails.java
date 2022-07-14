@@ -19,8 +19,14 @@ public class BookingDetails {
     @Id
     private String vehicleId;
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "branch_id")
+    @JoinColumn(name = "branch_Id",referencedColumnName = "branchID")
     private Branch branch;
+    @ManyToOne
+    @JoinColumn(name = "requestId",referencedColumnName = "requestId",insertable = false,updatable = false)
+    private BookingRequest bookingRequest;
+    @ManyToOne
+    @JoinColumn(name = "vehicleId",referencedColumnName = "vehicleNo",insertable = false,updatable = false)
+    private Vehicle vehicle;
     private String pickupDate;
     private String pickupTime;
     private String returnDate;

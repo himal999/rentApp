@@ -4,6 +4,7 @@ version : 0.0.1
 */
 
 import lk.rent.app.embeded.LicenseEM;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,4 +17,5 @@ import lombok.ToString;
 public class LicenseDTO {
     private String renewId;
     private LicenseEM licenseem;
+
 }

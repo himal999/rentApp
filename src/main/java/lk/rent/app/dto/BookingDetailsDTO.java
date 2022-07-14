@@ -18,10 +18,9 @@ import lombok.ToString;
 @ToString
 public class BookingDetailsDTO {
 
-    private String bookingId;
-    private BookingRequest bookingRequest;
-    private Vehicle vehicle;
-    private Branch branch;
+    private String requestId;
+    private String vehicleId;
+    private BranchDTO branch;
     private String pickupDate;
     private String pickupTime;
     private String returnDate;

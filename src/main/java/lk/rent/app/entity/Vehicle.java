@@ -23,8 +23,8 @@ public class Vehicle {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "branch_id")
     private Branch branch;
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "license_id")
+    @OneToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "license_id",referencedColumnName = "renewId",unique = true)
     private License license;
     private String brand;
     private String model;
@@ -42,6 +42,6 @@ public class Vehicle {
     private String vehicleType;
     private String currentKm;
     private String initKm;
-
+    private String status;
 
 }

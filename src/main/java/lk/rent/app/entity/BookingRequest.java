@@ -27,7 +27,7 @@ public class BookingRequest {
     @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
     @JoinColumn(name = "dis_id",referencedColumnName = "discountID",nullable = false)
     private Discount discount;
-    @OneToMany(mappedBy = "orders",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "bookingRequest",cascade = CascadeType.ALL)
     private List<BookingDetails> bookingDetails;
     private int noOfVehicles;
     private String requestDate;

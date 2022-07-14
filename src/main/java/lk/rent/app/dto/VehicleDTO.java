@@ -35,6 +35,5 @@ public class VehicleDTO {
     private String vehicleType;
     private String currentKm;
     private String initKm;
-
-
+    private String status;
 }

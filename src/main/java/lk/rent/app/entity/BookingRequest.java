@@ -3,17 +3,22 @@ author :Himal
 version : 0.0.1
 */
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@ToString
 @Entity
 public class BookingRequest {
     @Id
@@ -30,7 +35,9 @@ public class BookingRequest {
     @OneToMany(mappedBy = "bookingRequest",cascade = CascadeType.ALL)
     private List<BookingDetails> bookingDetails;
     private int noOfVehicles;
-    private String requestDate;
-    private String requestTime;
+    @JsonFormat(pattern = "yyyy/MM/dd")
+    private LocalDate requestDate;
+    @JsonFormat(pattern = "hh:mm:ss a")
+    private LocalTime requestTime; //call me
 
 }

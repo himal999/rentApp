@@ -3,6 +3,7 @@ author :Himal
 version : 0.0.1
 */
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lk.rent.app.embeded.Name;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,6 +13,7 @@ import lombok.ToString;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,6 +27,7 @@ public class Customer {
     private String address;
     private String tel;
     private String email;
-    private String dob;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dob;
     private String gender;
 }

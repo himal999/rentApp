@@ -20,7 +20,6 @@ public class BookingRequestController {
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil booking(@RequestBody BookingRequestDTO bookingRequestDTO){
-        System.out.println(bookingRequestDTO.toString());
         bookingRequestService.addRequest(bookingRequestDTO);
         return new ResponseUtil(200, "Ok", null);
     }

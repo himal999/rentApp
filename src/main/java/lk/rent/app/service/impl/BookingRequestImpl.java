@@ -36,19 +36,30 @@ public class BookingRequestImpl implements BookingRequestService {
 
     @Override
     public void addRequest(BookingRequestDTO bookingRequestDTO) {
-        BookingRequest booking = mapper.map(bookingRequestDTO, BookingRequest.class);
-        if(!bookingRequestRepo.existsById(bookingRequestDTO.getRequestId())){
-            bookingRequestRepo.save(booking);
-            if(bookingRequestDTO.getBookingDetails().size()<1) throw new RuntimeException("No Vehicle added for the Booking..!");
+      try {
+          System.out.println("===========================================");
+          System.out.println(bookingRequestDTO.toString());
+          BookingRequest booking = mapper.map(bookingRequestDTO, BookingRequest.class);
+          System.out.println("===========================================");
+          System.out.println(booking.toString());
+          System.out.println("===========================================");
+          if (!bookingRequestRepo.existsById(bookingRequestDTO.getRequestId())) {
 
-            for (BookingDetails temp:booking.getBookingDetails()) {
-                Vehicle vehicle = vehicleRepo.findById(temp.getVehicleId()).get();
-                vehicle.setStatus("Not Available");
-                vehicleRepo.save(vehicle);
-            }
-        }else{
-            throw new RuntimeException("Vehicle Booking Failed...");
-        }
+              bookingRequestRepo.save(booking);
+              if (bookingRequestDTO.getBookingDetails().size() < 1)
+                  throw new RuntimeException("No Vehicle added for the Booking..!");
+
+              for (BookingDetails temp : booking.getBookingDetails()) {
+                  Vehicle vehicle = vehicleRepo.findById(temp.getVehicleId()).get();
+                  vehicle.setStatus("Not Available");
+                  vehicleRepo.save(vehicle);
+              }
+          } else {
+              throw new RuntimeException("Vehicle Booking Failed...");
+          }
+      }catch(Exception e){
+          e.printStackTrace();
+      }
     }
 
     @Override

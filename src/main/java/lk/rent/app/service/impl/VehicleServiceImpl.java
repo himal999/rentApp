@@ -58,5 +58,6 @@ public class VehicleServiceImpl implements VehicleService {
         }else{
             throw new RuntimeException("Can't find Vehicle,Please not Register Vehicle yet!!!");
         }
+
     }
 }

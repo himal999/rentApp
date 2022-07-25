@@ -42,6 +42,8 @@ public class Vehicle {
     private String vehicleType;
     private String currentKm;
     private String initKm;
+    private int passenger;
+    private String speed;
     private String status;
 
 }

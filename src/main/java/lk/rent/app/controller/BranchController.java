@@ -11,7 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/branch")
+@RequestMapping("branch")
 @CrossOrigin
 public class BranchController {
     @Autowired
@@ -35,7 +35,7 @@ public class BranchController {
     }
 
     @DeleteMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil deleteCustomer(@PathVariable("id") String id) {
+    public ResponseUtil deleteBranch(@PathVariable("id") String id) {
         branchService.deleteBranch(id);
         return new ResponseUtil(200, "success", null);
     }
